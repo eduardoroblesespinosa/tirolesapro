@@ -1,0 +1,86 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Tirolesas Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Exo+2:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <h1>ZipLine Pro™</h1>
+            <p>Software de Simulación y Diseño de Tirolesas</p>
+        </header>
+        <main>
+            <div id="simulation-wrapper">
+                <canvas id="simulationCanvas"></canvas>
+                <div id="instructions">Haz clic en el lienzo para establecer el punto de INICIO de la tirolesa.</div>
+            </div>
+            <div id="controls">
+                <h2>Panel de control</h2>
+                <div class="control-group">
+                    <label for="tension">Tensión del Cable</label>
+                    <input type="range" id="tension" min="0.01" max="0.3" value="0.1" step="0.01">
+                </div>
+                 <div class="control-group">
+                    <label for="riderWeight">Peso del Pasajero (kg)</label>
+                    <input type="range" id="riderWeight" min="20" max="150" value="80" step="1">
+                    <span id="riderWeightValue">80 kg</span>
+                </div>
+                <div class="control-group">
+                    <label for="environment">Entorno de Instalación</label>
+                    <select id="environment">
+                        <option value="none" selected>Ninguno (Cuadrícula)</option>
+                        <option value="bosque">Bosque</option>
+                        <option value="selva">Selva</option>
+                        <option value="desierto">Desierto</option>
+                        <option value="tundra">Tundra</option>
+                        <option value="montana">Montaña</option>
+                        <option value="ciudad">Ciudad</option>
+                        <option value="caverna">Caverna</option>
+                        <option value="acuatico">Acuático</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="horizontalDistance">Distancia Horizontal (m)</label>
+                    <input type="number" id="horizontalDistance" value="0" step="0.1">
+                </div>
+                <div class="control-group">
+                    <label for="verticalDrop">Caída Vertical (m)</label>
+                    <input type="number" id="verticalDrop" value="0" step="0.1">
+                </div>
+                <div class="control-group">
+                    <label for="dragCoefficient">Coeficiente de Arrastre</label>
+                    <input type="range" id="dragCoefficient" min="0" max="0.5" value="0.1" step="0.01">
+                    <span id="dragCoefficientValue">0.10</span>
+                </div>
+                <div class="button-group">
+                    <button id="simulateBtn" disabled>▶️ Simular</button>
+                    <button id="resetBtn">🔄 Reiniciar</button>
+                </div>
+                <div id="data-panel">
+                    <h3>Datos de la Simulación</h3>
+                    <p><strong>Estado:</strong> <span id="status">Esperando diseño</span></p>
+                    <p><strong>Longitud del cable:</strong> <span id="length">0.00 m</span></p>
+                    <p><strong>Diferencia de altura:</strong> <span id="height-diff">0.00 m</span></p>
+                    <p><strong>Pendiente media:</strong> <span id="slope">0.0 %</span></p>
+                    <p><strong>Velocidad máx. estimada:</strong> <span id="speed">0.0 km/h</span></p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
